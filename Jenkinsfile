@@ -1,5 +1,4 @@
 pipeline{
-
     agent any
 
     stages{
@@ -8,6 +7,12 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/ZinebSG/LAWFIRM.git'
             }
         }
-    }
+        stage("UNIT TEST"){
+            steps{
+                sh'mvn test'
+                
+            }
+        }
+     }
 
 }
