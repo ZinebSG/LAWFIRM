@@ -10,7 +10,6 @@ pipeline{
         stage("UNIT TEST"){
             steps{
                 sh'mvn test'
-
             }
         }
         stage("INTEGRATION TEST"){
@@ -23,6 +22,14 @@ pipeline{
             steps{
                 sh'mvn clean install'
                 
+            }
+        }
+        stage("STATIC Test Analyxis"){
+            steps{
+                script {
+                    withSonarQubeEnv(credentialsId: 'Sonar-token') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
             }
         }
      }
