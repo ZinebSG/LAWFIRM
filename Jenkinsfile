@@ -33,5 +33,15 @@ pipeline{
                 }
             }
         }
+        stage("Continous Delivery"){
+            steps{
+                script {
+                    
+                        sh 'cp -r /home/ubuntu/.jenkins/workspace/Pipline-zineb/ /var/www/html/'
+                        
+                    
+                }
+            }
+        }
     }
 }
